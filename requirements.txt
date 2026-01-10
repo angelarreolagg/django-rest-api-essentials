@@ -1,0 +1,10 @@
+asgiref==3.11.0
+Django==6.0.1
+django-seed==0.3.1
+djangorestframework==3.16.1
+Faker==40.1.0
+psycopg==3.3.2
+python-dotenv==1.2.1
+sqlparse==0.5.5
+toposort==1.10
+tzdata==2025.3
