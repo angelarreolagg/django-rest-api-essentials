@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .serializers import PatientSerializer
 from .models import Patient
+from .serializers import PatientSerializer
 
 class PatientList(generics.ListCreateAPIView):
     queryset = Patient.objects.all()
