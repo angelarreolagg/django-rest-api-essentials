@@ -1,13 +1,6 @@
-from rest_framework import generics
+from rest_framework import viewsets
 from .models import Doctor
 from .serializers import DoctorSerializer
-
-
-class DoctorList(generics.ListCreateAPIView):
-    queryset = Doctor.objects.all()
-    serializer_class = DoctorSerializer
-
-
-class DoctorDetail(generics.RetrieveUpdateDestroyAPIView):
+class DoctorViewSet(viewsets.ModelViewSet):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
