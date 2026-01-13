@@ -1,7 +1,7 @@
 from django.urls import path
-from patients.views import patient_list, patient_detail
+from patients.views import PatientList, PatientDetail
 
 urlpatterns = [
-    path("patients/", patient_list),
-    path("patients/<str:pk>/", patient_detail),
+    path("patients/", PatientList.as_view()),
+    path("patients/<str:pk>/", PatientDetail.as_view()),
 ]
