@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
-from . import views
+from . import viewsets
 
 router = DefaultRouter()
-router.register(r'patients', views.PatientViewSet, basename='patients')
+router.register(r"patients", viewsets.PatientViewSet, basename="patients")
 urlpatterns = router.urls

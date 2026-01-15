@@ -1,7 +1,7 @@
 from rest_framework.routers import DefaultRouter
-from . import views
+from . import viewsets
 
 router = DefaultRouter()
-router.register(r'bookings', views.AppointmentViewSet, basename='bookings')
-router.register(r'medical_note', views.MedicalNoteViewSet, basename='medical_note')
+router.register(r"bookings", viewsets.AppointmentViewSet, basename="bookings")
+router.register(r"medical_note", viewsets.MedicalNoteViewSet, basename="medical_note")
 urlpatterns = router.urls
