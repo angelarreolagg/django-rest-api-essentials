@@ -1,8 +1,10 @@
 from rest_framework import serializers
 from .models import Patient, Insurance, MedicalRecord
+from bookings.serializers import AppointmentSerializer
 
 
 class PatientSerializer(serializers.ModelSerializer):
+    appointments = AppointmentSerializer(many=True, read_only=True)
     class Meta:
         model = Patient
         fields = [
@@ -14,6 +16,7 @@ class PatientSerializer(serializers.ModelSerializer):
             "email",
             "address",
             "medical_history",
+            "appointments",
         ]
 
 

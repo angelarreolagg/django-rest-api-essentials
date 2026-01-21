@@ -1,12 +1,24 @@
 import re
 from rest_framework import serializers
 from .models import Doctor, Department, DoctorAvailability, MedicalNote
+from bookings.serializers import AppointmentSerializer
 
 
 class DoctorSerializer(serializers.ModelSerializer):
+    appointments = AppointmentSerializer(many=True, read_only=True)
     class Meta:
         model = Doctor
-        fields = "__all__"
+        fields = [
+            "first_name",
+            "last_name",
+            "qualification",
+            "contact_number",
+            "email",
+            "address",
+            "biography",
+            "is_on_vacation",
+            "appointments",
+        ]
 
     def validate_email(self, value):
        # Regex pattern: valid email format with @example.com domain
