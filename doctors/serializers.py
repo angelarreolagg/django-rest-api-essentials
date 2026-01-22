@@ -37,7 +37,7 @@ class DoctorSerializer(serializers.ModelSerializer):
         raise serializers.ValidationError("Email must be in the format: username@example.com")
 
     def validate(self, attrs):
-        if len(attrs["contact_number"]) < 10 and attrs["is_on_vacation"] == True:
+        if len(attrs["contact_number"]) < 11 and attrs["is_on_vacation"] == True:
             raise serializers.ValidationError(
                 "Please update the contact information with a valid phone number before setting the doctor on vacation."
             )
