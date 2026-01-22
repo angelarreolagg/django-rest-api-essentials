@@ -8,6 +8,7 @@ class Doctor(models.Model):
     contact_number = models.CharField(max_length=10)
     email = models.EmailField()
     address = models.TextField()
+    start_date = models.DateField(null=True);
     biography = models.TextField()
     is_on_vacation = models.BooleanField(default=False)
 

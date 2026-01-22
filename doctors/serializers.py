@@ -1,3 +1,4 @@
+from datetime import date
 import re
 from rest_framework import serializers
 from .models import Doctor, Department, DoctorAvailability, MedicalNote
@@ -6,6 +7,7 @@ from bookings.serializers import AppointmentSerializer
 
 class DoctorSerializer(serializers.ModelSerializer):
     appointments = AppointmentSerializer(many=True, read_only=True)
+    years_of_experience = serializers.SerializerMethodField()
     class Meta:
         model = Doctor
         fields = [
@@ -15,10 +17,17 @@ class DoctorSerializer(serializers.ModelSerializer):
             "contact_number",
             "email",
             "address",
+            "start_date",
+            "years_of_experience",
             "biography",
             "is_on_vacation",
             "appointments",
         ]
+    
+    def get_years_of_experience(self, obj):
+        if obj.start_date != None:
+            return (date.today() - obj.start_date).days // 365
+        return "Not available"
 
     def validate_email(self, value):
        # Regex pattern: valid email format with @example.com domain
